@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Sokanacademy\LaravelFluentRabbitMQ\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class LaravelFluentRabbitMQCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'laravel-fluent-rabbitmq';
 
     public $description = 'My command';
 

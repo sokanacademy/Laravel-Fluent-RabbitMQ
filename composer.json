@@ -1,17 +1,17 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "sokanacademy/laravel-fluent-rabbitmq",
+    "description": "A package to work with RabbitMQ in an elegant way.",
     "keywords": [
-        ":vendor_name",
+        "sokanacademy",
         "laravel",
-        ":package_slug"
+        "laravel-fluent-rabbitmq"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/sokanacademy/laravel-fluent-rabbitmq",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Sokanacademy",
+            "email": "sokanacademy@gmail.com",
             "role": "Developer"
         }
     ],
@@ -22,25 +22,21 @@
     },
     "require-dev": {
         "nunomaduro/collision": "^6.0",
-        "nunomaduro/larastan": "^2.0.1",
         "orchestra/testbench": "^7.0",
         "pestphp/pest": "^1.21",
         "pestphp/pest-plugin-laravel": "^1.1",
-        "phpstan/extension-installer": "^1.1",
-        "phpstan/phpstan-deprecation-rules": "^1.0",
-        "phpstan/phpstan-phpunit": "^1.0",
         "phpunit/phpunit": "^9.5",
         "spatie/laravel-ray": "^1.26"
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories"
+            "Sokanacademy\\LaravelFluentRabbitMQ\\": "src",
+            "Sokanacademy\\LaravelFluentRabbitMQ\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "Sokanacademy\\LaravelFluentRabbitMQ\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -54,10 +50,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "Sokanacademy\\LaravelFluentRabbitMQ\\LaravelFluentRabbitMQServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "LaravelFluentRabbitMQ": "Sokanacademy\\LaravelFluentRabbitMQ\\Facades\\LaravelFluentRabbitMQ"
             }
         }
     },
