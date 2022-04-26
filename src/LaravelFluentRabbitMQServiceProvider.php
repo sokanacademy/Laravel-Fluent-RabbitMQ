@@ -2,9 +2,9 @@
 
 namespace Sokanacademy\LaravelFluentRabbitMQ;
 
+use Sokanacademy\LaravelFluentRabbitMQ\Commands\LaravelFluentRabbitMQCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Sokanacademy\LaravelFluentRabbitMQ\Commands\LaravelFluentRabbitMQCommand;
 
 class LaravelFluentRabbitMQServiceProvider extends PackageServiceProvider
 {
