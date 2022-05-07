@@ -2,8 +2,8 @@
 
 namespace Sokanacademy\RabbitMQ\Commands;
 
-use Sokanacademy\RabbitMQ\RabbitMQ;
 use Illuminate\Console\Command;
+use Sokanacademy\RabbitMQ\RabbitMQ;
 
 class ConsumeMessages extends Command
 {

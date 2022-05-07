@@ -2,9 +2,9 @@
 
 namespace Sokanacademy\RabbitMQ;
 
-use Sokanacademy\RabbitMQ\Support\ShouldPublish;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Events\Dispatcher;
+use Sokanacademy\RabbitMQ\Support\ShouldPublish;
 
 class RabbitMQDispatcher extends Dispatcher
 {

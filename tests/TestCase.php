@@ -2,8 +2,8 @@
 
 namespace Sokanacademy\RabbitMQ\Tests;
 
-use Sokanacademy\RabbitMQ\RabbitMQServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
+use Sokanacademy\RabbitMQ\RabbitMQServiceProvider;
 
 class TestCase extends Orchestra
 {

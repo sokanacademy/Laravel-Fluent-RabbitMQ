@@ -2,12 +2,12 @@
 
 namespace Sokanacademy\RabbitMQ\Commands;
 
-use Sokanacademy\RabbitMQ\RabbitMQ;
-use Sokanacademy\RabbitMQ\Support\ShouldPublish;
 use Illuminate\Console\Command;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider;
 use Illuminate\Support\Collection;
 use ReflectionClass;
+use Sokanacademy\RabbitMQ\RabbitMQ;
+use Sokanacademy\RabbitMQ\Support\ShouldPublish;
 
 class DeclareExchanges extends Command
 {
