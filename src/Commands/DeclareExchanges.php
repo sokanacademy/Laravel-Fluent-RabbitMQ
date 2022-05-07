@@ -1,9 +1,9 @@
 <?php
 
-namespace Alirzaj\RabbitMQ\Commands;
+namespace Sokanacademy\RabbitMQ\Commands;
 
-use Alirzaj\RabbitMQ\RabbitMQ;
-use Alirzaj\RabbitMQ\Support\ShouldPublish;
+use Sokanacademy\RabbitMQ\RabbitMQ;
+use Sokanacademy\RabbitMQ\Support\ShouldPublish;
 use Illuminate\Console\Command;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider;
 use Illuminate\Support\Collection;

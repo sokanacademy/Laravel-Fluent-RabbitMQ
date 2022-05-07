@@ -1,9 +1,9 @@
 <?php
 
-namespace Alirzaj\RabbitMQ;
+namespace Sokanacademy\RabbitMQ;
 
-use Alirzaj\RabbitMQ\Commands\ConsumeMessages;
-use Alirzaj\RabbitMQ\Commands\DeclareExchanges;
+use Sokanacademy\RabbitMQ\Commands\ConsumeMessages;
+use Sokanacademy\RabbitMQ\Commands\DeclareExchanges;
 use Illuminate\Contracts\Queue\Factory as QueueFactoryContract;
 use Illuminate\Events\Dispatcher;
 use Illuminate\Support\ServiceProvider;

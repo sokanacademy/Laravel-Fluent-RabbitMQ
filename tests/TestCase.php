@@ -1,8 +1,8 @@
 <?php
 
-namespace Alirzaj\RabbitMQ\Tests;
+namespace Sokanacademy\RabbitMQ\Tests;
 
-use Alirzaj\RabbitMQ\RabbitMQServiceProvider;
+use Sokanacademy\RabbitMQ\RabbitMQServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra

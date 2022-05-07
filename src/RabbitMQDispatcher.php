@@ -1,8 +1,8 @@
 <?php
 
-namespace Alirzaj\RabbitMQ;
+namespace Sokanacademy\RabbitMQ;
 
-use Alirzaj\RabbitMQ\Support\ShouldPublish;
+use Sokanacademy\RabbitMQ\Support\ShouldPublish;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Events\Dispatcher;
 

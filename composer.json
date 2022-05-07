@@ -1,12 +1,12 @@
 {
-    "name": "alirzaj/laravel-rabbitmq",
+    "name": "sokanacademy/laravel-fluent-rabbitmq",
     "description": "integrate rabbitmq in a laravel application",
     "keywords": [
         "laravel rabbitmq",
         "laravel",
         "rabbitmq"
     ],
-    "homepage": "https://github.com/alirzaj/laravel-rabbitmq",
+    "homepage": "https://github.com/sokanacademy/Laravel-Fluent-RabbitMQ",
     "license": "MIT",
     "authors": [
         {
@@ -34,12 +34,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Alirzaj\\RabbitMQ\\": "src"
+            "Sokanacademy\\RabbitMQ\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Alirzaj\\RabbitMQ\\Tests\\": "tests"
+            "Sokanacademy\\RabbitMQ\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -57,7 +57,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Alirzaj\\RabbitMQ\\RabbitMQServiceProvider"
+                "Sokanacademy\\RabbitMQ\\RabbitMQServiceProvider"
             ]
         }
     },

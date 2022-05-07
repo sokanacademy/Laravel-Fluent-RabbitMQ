@@ -1,6 +1,6 @@
 <?php
 
-namespace Alirzaj\RabbitMQ;
+namespace Sokanacademy\RabbitMQ;
 
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 

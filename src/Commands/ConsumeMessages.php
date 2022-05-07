@@ -1,8 +1,8 @@
 <?php
 
-namespace Alirzaj\RabbitMQ\Commands;
+namespace Sokanacademy\RabbitMQ\Commands;
 
-use Alirzaj\RabbitMQ\RabbitMQ;
+use Sokanacademy\RabbitMQ\RabbitMQ;
 use Illuminate\Console\Command;
 
 class ConsumeMessages extends Command
