@@ -13,10 +13,15 @@
             "name": "alireza jazayerei",
             "email": "alireza.jazayerei@gmail.com",
             "role": "Developer"
+        },
+        {
+            "name": "Mohammadhossein Fereydouni",
+            "email": "mohammadhfereydouni@gmail.com",
+            "role": "Developer"
         }
     ],
     "require": {
-        "php": "^7.3",
+        "php": "^7.4",
         "illuminate/contracts": "^8.73",
         "php-amqplib/php-amqplib": ">=3.0",
         "ext-json": "*"
