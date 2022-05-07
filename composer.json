@@ -1,0 +1,66 @@
+{
+    "name": "alirzaj/laravel-rabbitmq",
+    "description": "integrate rabbitmq in a laravel application",
+    "keywords": [
+        "laravel rabbitmq",
+        "laravel",
+        "rabbitmq"
+    ],
+    "homepage": "https://github.com/alirzaj/laravel-rabbitmq",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "alireza jazayerei",
+            "email": "alireza.jazayerei@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.3",
+        "illuminate/contracts": "^8.73",
+        "php-amqplib/php-amqplib": ">=3.0",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "nunomaduro/collision": "^5.10",
+        "nunomaduro/larastan": "^1.0",
+        "orchestra/testbench": "^6.22",
+        "pestphp/pest": "^1.21",
+        "pestphp/pest-plugin-laravel": "^1.1",
+        "phpstan/extension-installer": "^1.1",
+        "phpstan/phpstan-deprecation-rules": "^1.0",
+        "phpstan/phpstan-phpunit": "^1.0",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Alirzaj\\RabbitMQ\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Alirzaj\\RabbitMQ\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "analyse": "vendor/bin/phpstan analyse",
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest coverage"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Alirzaj\\RabbitMQ\\RabbitMQServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

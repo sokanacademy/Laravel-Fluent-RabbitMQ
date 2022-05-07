@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  php:
+    build:
+      context: .
+      dockerfile: php.dockerfile
+    volumes:
+      - ./../:/var/www/html
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+  composer:
+    build:
+      context: .
+      dockerfile: php.dockerfile
+    volumes:
+      - ./../:/var/www/html
+    working_dir: /var/www/html
+    entrypoint: [ "composer" ]
+
