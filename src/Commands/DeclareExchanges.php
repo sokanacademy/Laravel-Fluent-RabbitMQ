@@ -39,7 +39,7 @@ class DeclareExchanges extends Command
                 $rabbitmq
                     ->exchange()
                     ->durable()
-                    ->type('direct')
+                    ->type('fanout')
                     ->name(class_basename($event))
                     ->declare();
 
