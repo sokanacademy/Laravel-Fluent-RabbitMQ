@@ -5,7 +5,6 @@ namespace Sokanacademy\RabbitMQ;
 use PhpAmqpLib\Channel\AMQPChannel;
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 
-
 class RabbitMQExchange
 {
     /**
