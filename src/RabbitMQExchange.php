@@ -3,6 +3,8 @@
 namespace Sokanacademy\RabbitMQ;
 
 use PhpAmqpLib\Channel\AMQPChannel;
+use PhpAmqpLib\Connection\AMQPStreamConnection;
+
 
 class RabbitMQExchange
 {
@@ -25,9 +27,9 @@ class RabbitMQExchange
      */
     private $durable = false;
 
-    public function __construct(AMQPChannel $channel)
+    public function __construct(AMQPStreamConnection $connection)
     {
-        $this->channel = $channel;
+        $this->channel = $connection->channel();
     }
 
     public function name(string $name): RabbitMQExchange

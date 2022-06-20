@@ -35,7 +35,7 @@ class RabbitMQ
 
     public function exchange(): RabbitMQExchange
     {
-        return new RabbitMQExchange($this->channel);
+        return new RabbitMQExchange($this->connection);
     }
 
     public function message(): RabbitMQMessage
