@@ -32,7 +32,7 @@ class ConsumeMessages extends Command
 
         $this->events = collect(config('rabbitmq.consumers'))
             ->mapWithKeys(function ($event) {
-                if (is_array($event)){
+                if (is_array($event)) {
                     return $event;
                 }
 
