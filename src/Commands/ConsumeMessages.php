@@ -31,7 +31,11 @@ class ConsumeMessages extends Command
         parent::__construct();
 
         $this->events = collect(config('rabbitmq.consumers'))
-            ->mapWithKeys(function (string $event) {
+            ->mapWithKeys(function ($event) {
+                if (is_array($event)){
+                    return $event;
+                }
+
                 return [class_basename($event) => $event];
             })
             ->toArray();
