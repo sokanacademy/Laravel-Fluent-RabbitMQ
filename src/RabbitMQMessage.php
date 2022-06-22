@@ -2,11 +2,14 @@
 
 namespace Sokanacademy\RabbitMQ;
 
+use Illuminate\Support\Traits\Conditionable;
 use PhpAmqpLib\Channel\AMQPChannel;
 use PhpAmqpLib\Message\AMQPMessage;
 
 class RabbitMQMessage
 {
+    use Conditionable;
+
     /**
      * @var AMQPChannel
      */
