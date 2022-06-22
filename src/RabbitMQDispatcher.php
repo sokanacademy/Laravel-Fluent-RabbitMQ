@@ -29,6 +29,11 @@ class RabbitMQDispatcher extends Dispatcher
             ->message()
             ->persistent()
             ->viaExchange(class_basename($event))
+            ->when(
+                method_exists($event, 'routingKey'),
+                fn (RabbitMQMessage $message) => $message
+                ->route($event->routingKey())
+            )
             ->withPayload(
                 array_map(
                     function ($property) {

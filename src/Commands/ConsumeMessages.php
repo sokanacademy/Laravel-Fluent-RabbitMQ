@@ -46,7 +46,13 @@ class ConsumeMessages extends Command
             ->declare();
 
         foreach (config('rabbitmq.consumers') as $event) {
-            $queue->bindTo(class_basename($event));
+            if (is_string($event)) {
+                $queue->bindTo(class_basename($event));
+            }
+
+            if (is_array($event)) {
+                $queue->bindTo(class_basename($event[0]), $event[1]);
+            }
         }
 
         $rabbitmq

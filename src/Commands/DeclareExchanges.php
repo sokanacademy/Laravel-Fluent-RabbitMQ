@@ -39,7 +39,7 @@ class DeclareExchanges extends Command
                 $rabbitmq
                     ->exchange()
                     ->durable()
-                    ->type('fanout')
+                    ->type($this->determineExchangeType($event))
                     ->name(class_basename($event))
                     ->declare();
 
@@ -66,5 +66,20 @@ class DeclareExchanges extends Command
         }
 
         return collect($events)->keys();
+    }
+
+    private function determineExchangeType(string $event): string
+    {
+        $reflection = (new ReflectionClass($event));
+
+        if (! $reflection->hasProperty('exchangeType')) {
+            return 'fanout';
+        }
+
+        $property = $reflection->getProperty('exchangeType');
+
+        $property->setAccessible(true);
+
+        return $property->getValue();
     }
 }
