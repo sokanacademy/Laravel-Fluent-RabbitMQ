@@ -18,7 +18,7 @@ class RabbitMQDispatcher extends Dispatcher
      */
     public function dispatch($event, $payload = [], $halt = false)
     {
-        if (!$event instanceof ShouldPublish) {
+        if (! $event instanceof ShouldPublish) {
             return parent::dispatch($event, $payload, $halt);
         }
 
@@ -29,7 +29,9 @@ class RabbitMQDispatcher extends Dispatcher
             ->message()
             ->persistent()
             ->viaExchange(class_basename($event))
-            ->when(method_exists($event, 'routingKey'), fn(RabbitMQMessage $message) => $message
+            ->when(
+                method_exists($event, 'routingKey'),
+                fn (RabbitMQMessage $message) => $message
                 ->route($event->routingKey())
             )
             ->withPayload(

@@ -72,7 +72,7 @@ class DeclareExchanges extends Command
     {
         $reflection = (new ReflectionClass($event));
 
-        if (!$reflection->hasProperty('exchangeType')) {
+        if (! $reflection->hasProperty('exchangeType')) {
             return 'fanout';
         }
 
