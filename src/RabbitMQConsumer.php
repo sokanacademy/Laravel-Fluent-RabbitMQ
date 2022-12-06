@@ -42,11 +42,14 @@ class RabbitMQConsumer
             $queue,
             '',
             false,
-            ! $this->acknowledge,
+            !$this->acknowledge,
             false,
             false,
             function (AMQPMessage $message) use ($handle) {
-                call_user_func_array($handle, [json_decode($message->getBody(), true)]);
+                call_user_func_array($handle, [
+                    json_decode($message->getBody(), true),
+                    $message->getRoutingKey()
+                ]);
 
                 if ($this->acknowledge) {
                     $message->ack();

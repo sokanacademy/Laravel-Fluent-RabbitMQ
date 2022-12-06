@@ -3,6 +3,8 @@
 namespace Sokanacademy\RabbitMQ\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Arr;
+use InvalidArgumentException;
 use Sokanacademy\RabbitMQ\RabbitMQ;
 
 class ConsumeMessages extends Command
@@ -31,12 +33,32 @@ class ConsumeMessages extends Command
         parent::__construct();
 
         $this->events = collect(config('rabbitmq.consumers'))
-            ->mapWithKeys(function ($event) {
-                if (is_array($event)) {
-                    return [class_basename($event[0]) => array_key_exists(2, $event) ? $event[2] : $event[0]];
+            ->map(function ($consume) {
+                if (is_string($consume)) {
+                    return [
+                        'base_event' => $consume,
+                        'event' => $consume,
+                        'routing_key' => '',
+                    ];
                 }
 
-                return [class_basename($event) => $event];
+                if (is_array($consume) && count($consume) === 2) {
+                    return [
+                        'base_event' => $consume[0],
+                        'event' => $consume[0],
+                        'routing_key' => $consume[1]
+                    ];
+                }
+
+                if (is_array($consume) && count($consume) === 3) {
+                    return [
+                        'base_event' => $consume[0],
+                        'event' => $consume[2],
+                        'routing_key' => $consume[1]
+                    ];
+                }
+
+                throw new InvalidArgumentException('invalid consumers array');
             })
             ->toArray();
     }
@@ -68,8 +90,13 @@ class ConsumeMessages extends Command
         return 0;
     }
 
-    public function fireEvent(array $payload)
+    public function fireEvent(array $payload, string $routingKey)
     {
-        event(resolve($this->events[$payload['event.name']], $payload));
+        $event = Arr::first($this->events, function (array $event) use ($routingKey, $payload) {
+            return $payload['event.name'] === class_basename($event['base_event'])
+                && ($event['routing_key'] ?? '') === $routingKey;
+        })['event'];
+
+        event(resolve($event, $payload));
     }
 }
