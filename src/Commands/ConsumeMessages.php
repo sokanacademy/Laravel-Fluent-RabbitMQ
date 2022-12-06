@@ -46,7 +46,7 @@ class ConsumeMessages extends Command
                     return [
                         'base_event' => $consume[0],
                         'event' => $consume[0],
-                        'routing_key' => $consume[1]
+                        'routing_key' => $consume[1],
                     ];
                 }
 
@@ -54,7 +54,7 @@ class ConsumeMessages extends Command
                     return [
                         'base_event' => $consume[0],
                         'event' => $consume[2],
-                        'routing_key' => $consume[1]
+                        'routing_key' => $consume[1],
                     ];
                 }
 
