@@ -4,6 +4,7 @@ namespace Sokanacademy\RabbitMQ\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 use InvalidArgumentException;
 use Sokanacademy\RabbitMQ\RabbitMQ;
 
