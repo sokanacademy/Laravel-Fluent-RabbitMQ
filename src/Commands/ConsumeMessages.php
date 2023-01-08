@@ -94,7 +94,7 @@ class ConsumeMessages extends Command
     {
         $event = Arr::first($this->events, function (array $event) use ($routingKey, $payload) {
             return $payload['event.name'] === class_basename($event['base_event'])
-                && ($event['routing_key'] ?? '') === $routingKey;
+                && Str::is($event['routing_key'] ?? '', $routingKey);
         })['event'];
 
         event(resolve($event, $payload));
