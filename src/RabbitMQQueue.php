@@ -6,20 +6,11 @@ use PhpAmqpLib\Channel\AMQPChannel;
 
 class RabbitMQQueue
 {
-    /**
-     * @var AMQPChannel
-     */
-    private $channel;
+    private AMQPChannel $channel;
 
-    /**
-     * @var bool
-     */
-    private $durable = false;
+    private bool $durable = false;
 
-    /**
-     * @var string
-     */
-    private $name;
+    private string $name;
 
     public function __construct(AMQPChannel $channel)
     {

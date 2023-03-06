@@ -2,19 +2,14 @@
 
 namespace Sokanacademy\RabbitMQ;
 
+use PhpAmqpLib\Channel\AMQPChannel;
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 
 class RabbitMQ
 {
-    /**
-     * @var AMQPStreamConnection
-     */
-    private $connection;
+    private AMQPStreamConnection $connection;
 
-    /**
-     * @var \PhpAmqpLib\Channel\AMQPChannel
-     */
-    private $channel;
+    private AMQPChannel $channel;
 
     public function __construct()
     {

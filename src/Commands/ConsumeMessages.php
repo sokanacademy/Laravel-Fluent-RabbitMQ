@@ -5,66 +5,32 @@ namespace Sokanacademy\RabbitMQ\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
-use InvalidArgumentException;
 use Sokanacademy\RabbitMQ\RabbitMQ;
 
 class ConsumeMessages extends Command
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
     protected $signature = 'rabbitmq:consume';
 
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
     protected $description = 'consume rabbitmq messages';
 
-    /**
-     * @var array
-     */
-    private $events;
+    private array $events;
 
     public function __construct()
     {
         parent::__construct();
 
         $this->events = collect(config('rabbitmq.consumers'))
-            ->map(function ($consume) {
-                if (is_string($consume)) {
-                    return [
-                        'base_event' => $consume,
-                        'event' => $consume,
-                        'routing_key' => '',
-                    ];
-                }
-
-                if (is_array($consume) && count($consume) === 2) {
-                    return [
-                        'base_event' => $consume[0],
-                        'event' => $consume[0],
-                        'routing_key' => $consume[1],
-                    ];
-                }
-
-                if (is_array($consume) && count($consume) === 3) {
-                    return [
-                        'base_event' => $consume[0],
-                        'event' => $consume[2],
-                        'routing_key' => $consume[1],
-                    ];
-                }
-
-                throw new InvalidArgumentException('invalid consumers array');
+            ->map(function ($event) {
+                return [
+                    'base_event' => $event['event'],
+                    'map_into_event' => $event['map_into'] ?? $event['event'],
+                    'routing_key' => $event['routing_key'] ?? '',
+                ];
             })
             ->toArray();
     }
 
-    public function handle(RabbitMQ $rabbitmq)
+    public function handle(RabbitMQ $rabbitmq): int
     {
         $queue = $rabbitmq
             ->queue()
@@ -72,14 +38,8 @@ class ConsumeMessages extends Command
             ->name(config('app.name'))
             ->declare();
 
-        foreach (config('rabbitmq.consumers') as $event) {
-            if (is_string($event)) {
-                $queue->bindTo(class_basename($event));
-            }
-
-            if (is_array($event)) {
-                $queue->bindTo(class_basename($event[0]), $event[1]);
-            }
+        foreach ($this->events as $event) {
+            $queue->bindTo(class_basename($event['base_event']), $event['routing_key']);
         }
 
         $rabbitmq
@@ -88,15 +48,15 @@ class ConsumeMessages extends Command
             ->from(config('app.name'), [$this, 'fireEvent'])
             ->receive();
 
-        return 0;
+        return Command::SUCCESS;
     }
 
     public function fireEvent(array $payload, string $routingKey)
     {
         $event = Arr::first($this->events, function (array $event) use ($routingKey, $payload) {
             return $payload['event.name'] === class_basename($event['base_event'])
-                && Str::is($event['routing_key'] ?? '', $routingKey);
-        })['event'];
+                && Str::is($event['routing_key'], $routingKey);
+        })['map_into_event'];
 
         event(resolve($event, $payload));
     }

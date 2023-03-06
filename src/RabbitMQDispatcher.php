@@ -8,15 +8,7 @@ use Sokanacademy\RabbitMQ\Support\ShouldPublish;
 
 class RabbitMQDispatcher extends Dispatcher
 {
-    /**
-     * Fire an event and call the listeners.
-     *
-     * @param string|object $event
-     * @param mixed $payload
-     * @param bool $halt
-     * @return array|null
-     */
-    public function dispatch($event, $payload = [], $halt = false)
+    public function dispatch($event, $payload = [], $halt = false): ?array
     {
         if (! $event instanceof ShouldPublish) {
             return parent::dispatch($event, $payload, $halt);

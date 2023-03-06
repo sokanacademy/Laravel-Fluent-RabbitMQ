@@ -7,20 +7,11 @@ use PhpAmqpLib\Message\AMQPMessage;
 
 class RabbitMQConsumer
 {
-    /**
-     * @var AMQPChannel
-     */
-    private $channel;
+    private AMQPChannel $channel;
 
-    /**
-     * @var int
-     */
-    private $qos = 1;
+    private int $qos = 1;
 
-    /**
-     * @var bool
-     */
-    private $acknowledge = false;
+    private bool $acknowledge = false;
 
     public function __construct(AMQPChannel $channel)
     {
@@ -74,9 +65,6 @@ class RabbitMQConsumer
         }
     }
 
-    /**
-     * Close the channel.
-     */
     public function __destruct()
     {
         $this->channel->close();
