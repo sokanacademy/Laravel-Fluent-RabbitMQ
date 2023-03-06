@@ -10,24 +10,11 @@ use Sokanacademy\RabbitMQ\RabbitMQ;
 
 class ConsumeMessages extends Command
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
     protected $signature = 'rabbitmq:consume';
 
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
     protected $description = 'consume rabbitmq messages';
 
-    /**
-     * @var array
-     */
-    private $events;
+    private array $events;
 
     public function __construct()
     {
@@ -64,7 +51,7 @@ class ConsumeMessages extends Command
             ->toArray();
     }
 
-    public function handle(RabbitMQ $rabbitmq)
+    public function handle(RabbitMQ $rabbitmq): int
     {
         $queue = $rabbitmq
             ->queue()

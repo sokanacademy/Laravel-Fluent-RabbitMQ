@@ -11,21 +11,11 @@ use Sokanacademy\RabbitMQ\Support\ShouldPublish;
 
 class DeclareExchanges extends Command
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
     protected $signature = 'rabbitmq:declare-exchanges';
 
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
     protected $description = 'declare exchanges';
 
-    public function handle(RabbitMQ $rabbitmq)
+    public function handle(RabbitMQ $rabbitmq): int
     {
         $this
             ->getEvents()
