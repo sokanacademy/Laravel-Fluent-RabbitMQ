@@ -32,15 +32,36 @@ php artisan vendor:publish --tag="laravel-fluent-rabbitmq-config"
 This is the contents of the published config file:
 
 ```php
+<?php
+
 return [
+    'host' => 'rabbitmq',
+    'port' => '5672',
+    'user' => 'guest',
+    'password' => 'guest',
+
+    'queues' => ['default'],
+
+    'consumers' => [
+        // \App\Events\MyEvent
+    ]
 ];
 ```
 
 ## Usage
 
+### Mark an event to be published on RabbitMQ
+The only thing you must do is to make sure your event implements Sokanacademy\RabbitMQ\Support\ShouldPublish interface and that's it.
+
+### declare exchanges in rabbitmq server
+When a laravel application wants to publish events, you must run this command to create appropriate exchanges on RabbitMQ.
+For each event it will create an exchange with the name of event class.
+You can read more on exchanges types [here](https://www.rabbitmq.com/tutorials/amqp-concepts.html).
+
+The default type for exchanges will be 'fanout'. If you want to alter the type of exchange for an event you can add this property to your event:
+
 ```php
-$laravelFluentRabbitMQ = new Sokanacademy\LaravelFluentRabbitMQ();
-echo $laravelFluentRabbitMQ->echoPhrase('Hello, Sokanacademy!');
+    private static string $exchangeType = 'topic';
 ```
 
 ## Changelog
