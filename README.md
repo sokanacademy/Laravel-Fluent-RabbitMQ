@@ -51,7 +51,16 @@ return [
 ## Usage
 
 ### Mark an event to be published on RabbitMQ
-The only thing you must do is to make sure your event implements Sokanacademy\RabbitMQ\Support\ShouldPublish interface and that's it.
+The only thing you must do is to make sure your event implements `Sokanacademy\RabbitMQ\Support\ShouldPublish` interface and that's it.
+All of the event's public properties will be published, and you can have access to them in your consumer.
+
+If you want your event to be published using a routing key, then consider adding routingKey method to your event:
+```php
+    public function routingKey(): string
+    {
+        return 'routing_key';
+    }
+```
 
 ### declare exchanges in rabbitmq server
 When a laravel application wants to publish events, you must run this command to create appropriate exchanges on RabbitMQ.
