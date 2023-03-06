@@ -50,7 +50,7 @@ return [
 
 The only thing you must do is to make sure your event implements `Sokanacademy\RabbitMQ\Support\ShouldPublish` interface
 and that's it.
-All of the event's public properties will be published, and you can have access to them in your consumer.
+All of the event's public properties will be published, and you can have access to them in your consumer. Make sure these properties are primitive or Arrayable.
 
 If you want your event to be published using a routing key, then consider adding routingKey method to your event:
 
