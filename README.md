@@ -1,6 +1,3 @@
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/support-ukraine.svg?t=1" />](https://supportukrainenow.org)
-
 # A package to work with RabbitMQ in an elegant way.
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/sokanacademy/laravel-fluent-rabbitmq.svg?style=flat-square)](https://packagist.org/packages/sokanacademy/laravel-fluent-rabbitmq)
@@ -8,21 +5,22 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/sokanacademy/laravel-fluent-rabbitmq/Check%20&%20fix%20styling?label=code%20style)](https://github.com/sokanacademy/laravel-fluent-rabbitmq/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/sokanacademy/laravel-fluent-rabbitmq.svg?style=flat-square)](https://packagist.org/packages/sokanacademy/laravel-fluent-rabbitmq)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+This package allows your laravel applications to easily communicate with each other in an event driven way.
+
+One service can publish an event and another one can consume the event and take actions accordingly.
 
 ## Installation
 
 You can install the package via composer:
 
 ```bash
-composer require sokanacademy/laravel-fluent-rabbitmq
+composer require sokanacademy/laravel-fluent-rabbitmq:0.11
 ```
 
-You can publish and run the migrations with:
+Then you should publish the package config with running this command:
 
 ```bash
-php artisan vendor:publish --tag="laravel-fluent-rabbitmq-migrations"
-php artisan migrate
+php artisan vendor:publish --tag="laravel-fluent-rabbitmq-config"
 ```
 
 You can publish the config file with:
@@ -38,23 +36,11 @@ return [
 ];
 ```
 
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="laravel-fluent-rabbitmq-views"
-```
-
 ## Usage
 
 ```php
 $laravelFluentRabbitMQ = new Sokanacademy\LaravelFluentRabbitMQ();
 echo $laravelFluentRabbitMQ->echoPhrase('Hello, Sokanacademy!');
-```
-
-## Testing
-
-```bash
-composer test
 ```
 
 ## Changelog
