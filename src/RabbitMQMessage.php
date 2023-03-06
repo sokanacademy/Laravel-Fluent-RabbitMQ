@@ -10,30 +10,15 @@ class RabbitMQMessage
 {
     use Conditionable;
 
-    /**
-     * @var AMQPChannel
-     */
-    private $channel;
+    private AMQPChannel $channel;
 
-    /**
-     * @var array
-     */
-    private $payload;
+    private array $payload;
 
-    /**
-     * @var bool
-     */
-    private $persistent = false;
+    private bool $persistent = false;
 
-    /**
-     * @var string
-     */
-    private $routingKey = '';
+    private string $routingKey = '';
 
-    /**
-     * @var string
-     */
-    private $exchange;
+    private string $exchange;
 
     public function __construct(AMQPChannel $channel)
     {
@@ -61,7 +46,7 @@ class RabbitMQMessage
         return $this;
     }
 
-    public function viaExchange(string $exchange)
+    public function viaExchange(string $exchange): RabbitMQMessage
     {
         $this->exchange = $exchange;
 

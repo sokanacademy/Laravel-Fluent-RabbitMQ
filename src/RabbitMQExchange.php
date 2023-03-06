@@ -7,24 +7,13 @@ use PhpAmqpLib\Connection\AMQPStreamConnection;
 
 class RabbitMQExchange
 {
-    /**
-     * @var AMQPChannel
-     */
-    private $channel;
+    private AMQPChannel $channel;
 
-    /**
-     * @var string
-     */
-    private $name;
+    private string $name;
 
-    /**
-     * @var string
-     */
-    private $type;
-    /**
-     * @var bool
-     */
-    private $durable = false;
+    private string $type;
+
+    private bool $durable = false;
 
     public function __construct(AMQPStreamConnection $connection)
     {
