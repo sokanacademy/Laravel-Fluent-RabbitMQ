@@ -37,7 +37,7 @@ class DeclareExchanges extends Command
                 $this->newLine();
             });
 
-        return 0;
+        return Command::SUCCESS;
     }
 
     private function getEvents(): Collection
