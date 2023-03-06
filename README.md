@@ -23,12 +23,6 @@ Then you should publish the package config with running this command:
 php artisan vendor:publish --tag="laravel-fluent-rabbitmq-config"
 ```
 
-You can publish the config file with:
-
-```bash
-php artisan vendor:publish --tag="laravel-fluent-rabbitmq-config"
-```
-
 This is the contents of the published config file:
 
 ```php
@@ -40,11 +34,13 @@ return [
     'user' => 'guest',
     'password' => 'guest',
 
-    'queues' => ['default'],
-
     'consumers' => [
-        // \App\Events\MyEvent
-    ]
+//        [
+//            'event' => '\App\Events\MyEvent',
+//            'routing_key' => 'my_routing_key', // if this event does not use routing key then remove this line
+//            'map_into' => '\App\Events\MapIntoEvent', // if you want to use the same event then remove this line
+//        ],
+    ],
 ];
 ```
 
@@ -77,6 +73,26 @@ property to your event:
 
 ```php
     private static string $exchangeType = 'topic';
+```
+
+## Consume events from RabbitMQ
+In the `rabbitmq.php` config file you should list all the events you want to consume.
+
+```php
+    'consumers' => [
+//        [
+//            'event' => '\App\Events\MyEvent',
+//            'routing_key' => 'my_routing_key', // if this event does not use routing key then remove this line
+//            'map_into' => '\App\Events\MapIntoEvent', // if you want to use the same event then remove this line
+//        ],
+    ],
+```
+If you have same event in both services (publisher and consumer) then you can omit the map_into option for the event.
+
+Then you can start consuming events with the following command:
+
+```bash
+php artisan rabbitmq:consume
 ```
 
 ## Changelog
