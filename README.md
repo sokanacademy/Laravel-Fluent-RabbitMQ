@@ -14,7 +14,7 @@ One service can publish an event and another one can consume the event and take 
 You can install the package via composer:
 
 ```bash
-composer require sokanacademy/laravel-fluent-rabbitmq:0.12
+composer require sokanacademy/laravel-fluent-rabbitmq:^1.0
 ```
 
 Then you should publish the package config with running this command:
