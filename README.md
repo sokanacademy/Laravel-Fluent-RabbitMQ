@@ -29,10 +29,11 @@ This is the contents of the published config file:
 <?php
 
 return [
-    'host' => 'rabbitmq',
-    'port' => '5672',
-    'user' => 'guest',
-    'password' => 'guest',
+    'host' => env('RABBITMQ_HOST', '127.0.0.1'),
+    'port' => env('RABBITMQ_PORT', 5672),
+    'user' => env('RABBITMQ_USER', 'guest'),
+    'password' => env('RABBITMQ_PASSWORD', 'guest'),
+    'vhost' => env('RABBITMQ_VHOST', '/'),
 
     'consumers' => [
 //        [
