@@ -2,6 +2,11 @@
 
 All notable changes to `:package_name` will be documented in this file.
 
+## Add vhost option & read configs from env - 2023-04-11
+
+- added vhost option
+- configs to target env
+
 ## Laravel 10 & PHP 8.1 support - 2023-03-12
 
 drop support for laravel < 10
